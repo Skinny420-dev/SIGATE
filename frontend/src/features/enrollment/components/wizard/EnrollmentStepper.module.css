@@ -1,0 +1,81 @@
+.stepperContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--surface-bg);
+  padding: var(--space-6);
+  border-radius: var(--radius-2xl);
+  margin-bottom: var(--space-8);
+  border: 1px solid var(--surface-border);
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.step:last-child {
+  flex: 0;
+}
+
+.iconCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-gray-100);
+  color: var(--color-gray-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all var(--transition-normal);
+  border: 2px solid transparent;
+}
+
+.stepLabel {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-gray-500);
+  white-space: nowrap;
+}
+.step:first-child .stepLabel { left: 24px; transform: translateX(-50%); }
+.step:last-child .stepLabel { left: 24px; transform: translateX(-50%); }
+
+.connector {
+  flex: 1;
+  height: 4px;
+  background: var(--color-gray-100);
+  margin: 0 16px;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-normal);
+}
+
+/* Active State */
+.active .iconCircle {
+  background: var(--color-primary-50);
+  color: var(--color-primary-600);
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 4px var(--color-primary-100);
+}
+.active .stepLabel {
+  color: var(--text-primary);
+  font-weight: 800;
+}
+
+/* Completed State */
+.completed .iconCircle {
+  background: var(--color-primary-600);
+  color: white;
+}
+.completed .connector {
+  background: var(--color-primary-600);
+}
+.completed .stepLabel {
+  color: var(--text-secondary);
+}

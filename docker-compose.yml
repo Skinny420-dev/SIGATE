@@ -1,0 +1,79 @@
+services:
+
+  # ============================================================================
+  # MICROSERVICIO 1: Base de Datos NoSQL (MongoDB)
+  # ============================================================================
+  mongodb:
+    image: mongo:6.0
+    container_name: sigate-mongodb
+    restart: unless-stopped
+    ports:
+      - "${MONGO_PORT}:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - sigate-network
+
+  # ============================================================================
+  # MICROSERVICIO 2: Base de Datos Relacional (PostgreSQL)
+  # ============================================================================
+  postgres-db:
+    image: postgres:15-alpine
+    container_name: sigate-postgres
+    restart: unless-stopped
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # Inyección automática del esquema y los datos iniciales
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
+      - ./database/seeds.sql:/docker-entrypoint-initdb.d/2-seeds.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d sigate"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - sigate-network
+
+  # ============================================================================
+  # MICROSERVICIO 3: API REST Autogenerada (PostgREST)
+  # ============================================================================
+  postgrest-api:
+    image: postgrest/postgrest:v11.1.0
+    container_name: sigate-postgrest
+    restart: unless-stopped
+    ports:
+      - "${POSTGREST_PORT}:3000"
+    environment:
+      # Conexión directa a la base de datos PostgreSQL
+      PGRST_DB_URI: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres-db:5432/${POSTGRES_DB}"
+      PGRST_DB_SCHEMA: "public"
+      PGRST_DB_ANON_ROLE: "${POSTGRES_USER}" # Rol para consultas anónimas (simplificado para desarrollo)
+      PGRST_OPENAPI_MODE: "follow-privileges"
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+    networks:
+      - sigate-network
+
+# ============================================================================
+# REDES Y VOLÚMENES PERSISTENTES
+# ============================================================================
+networks:
+  sigate-network:
+    driver: bridge
+
+volumes:
+  mongo_data:
+    driver: local
+  postgres_data:
+    driver: local

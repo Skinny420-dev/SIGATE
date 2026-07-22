@@ -1,0 +1,532 @@
+/* ─── Variables y Reset Local ─── */
+.container {
+  max-width: 650px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0 1rem;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ─── Progress Bar ─── */
+.progressWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.progressBarBg {
+  width: 100%;
+  height: 6px;
+  background: #cbd5e1;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(90deg, #182f59 0%, #f46c22 100%);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.progressLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #182f59;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: right;
+}
+
+/* ─── Card principal y bloques ─── */
+.card {
+  background: white;
+  border: 1px solid #e8edf3;
+  border-radius: 12px;
+  padding: 1.75rem;
+  box-shadow: 0 4px 20px rgba(24, 47, 89, 0.03);
+  position: relative;
+  text-align: left;
+}
+
+.bannerTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #182f59;
+  line-height: 1.3;
+  margin: 0 0 0.5rem 0;
+}
+
+.bannerSubtitle {
+  font-size: 0.85rem;
+  color: #f46c22;
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.bannerFooter {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.825rem;
+  color: #475569;
+}
+
+/* ─── Campos del Formulario ─── */
+.sectionCard {
+  background: white;
+  border: 1px solid #e8edf3;
+  border-radius: 12px;
+  padding: 1.75rem;
+  box-shadow: 0 4px 12px rgba(24, 47, 89, 0.02);
+  text-align: left;
+  transition: all 0.25s ease;
+}
+
+.sectionCard:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 24px rgba(24, 47, 89, 0.05);
+}
+
+.sectionLabel {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #182f59;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.01em;
+}
+
+.requiredAsterisk {
+  color: #ef4444;
+  margin-left: 3px;
+}
+
+
+.textInput {
+  width: 100%;
+  height: 48px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 0 1.25rem;
+  font-size: 0.925rem;
+  outline: none;
+  background: #f8fafc;
+  color: #0f172a;
+  transition: all 0.25s ease;
+}
+
+.textInput:focus {
+  background: white;
+  border-color: #f46c22;
+  box-shadow: 0 0 0 3px rgba(244, 108, 34, 0.12);
+}
+
+/* ─── Custom Radio Buttons ─── */
+.radioList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.radioGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.75rem;
+}
+
+.radioOption {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border: 1.5px solid #cbd5e1;
+  background: #f8fafc;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.radioOption:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.radioSelected {
+  background: #fff7ed !important;
+  border-color: #f46c22 !important;
+  color: #d95813 !important;
+  box-shadow: 0 2px 4px rgba(244, 108, 34, 0.05);
+}
+
+.radioCircle {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #94a3b8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.radioOption:hover .radioCircle {
+  border-color: #f46c22;
+}
+
+.radioSelected .radioCircle {
+  border-color: #f46c22;
+  background: #f46c22;
+}
+
+.radioCircleDot {
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.radioSelected .radioCircleDot {
+  transform: scale(1);
+}
+
+/* ─── Footer y botones de control ─── */
+.formFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.backBtn {
+  height: 40px;
+  padding: 0 1.25rem;
+  border: 1.5px solid #cbd5e1;
+  background: white;
+  color: #475569;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.backBtn:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.nextBtn {
+  height: 40px;
+  padding: 0 1.5rem;
+  background: #182f59;
+  color: white;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: background-color 0.15s;
+}
+
+.nextBtn:hover {
+  background: #25437a;
+}
+
+.completeBtn {
+  height: 40px;
+  padding: 0 1.5rem;
+  background: #10b981;
+  color: white;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.completeBtn:hover {
+  background: #059669;
+}
+
+/* ─── Alertas Inline ─── */
+.inlineError {
+  background: #fef2f2;
+  border-left: 4px solid #ef4444;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.8rem;
+  color: #b91c1c;
+  border-radius: 0 8px 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: fadeIn 0.2s ease-out;
+  text-align: left;
+}
+
+/* ─── Ticket de Confirmación ─── */
+.ticketCard {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: white;
+  border-radius: 16px;
+  border: 1.5px solid #cbd5e1;
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.ticketHeader {
+  background: #182f59;
+  color: white;
+  padding: 2.25rem 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.ticketHeader::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -8px;
+  height: 16px;
+  background-image: radial-gradient(circle, transparent 8px, white 8px);
+  background-size: 16px 16px;
+}
+
+.ticketHeaderIcon {
+  color: #10b981;
+  margin-bottom: 0.75rem;
+  animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.ticketBody {
+  padding: 2.5rem 2rem 2rem 2rem;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.ticketRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  border-bottom: 1px dashed #cbd5e1;
+  padding-bottom: 1.25rem;
+}
+
+.ticketRowNoBorder {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  padding-top: 0.25rem;
+}
+
+.ticketCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: left;
+}
+
+.ticketLabel {
+  font-size: 0.725rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.ticketValue {
+  font-size: 0.95rem;
+  color: #182f59;
+  font-weight: 700;
+}
+
+.ticketHighlightBlock {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  padding: 1.25rem;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.ticketHighlightLabel {
+  font-size: 0.725rem;
+  color: #2563eb;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.ticketHighlightValue {
+  font-size: 1.05rem;
+  color: #1e3a8a;
+  font-weight: 800;
+}
+
+.ticketWarning {
+  padding: 1rem 1.5rem;
+  background: #fffbeb;
+  border-top: 1.5px solid #fca5a5;
+  border-bottom: 1.5px solid #fca5a5;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  text-align: left;
+}
+
+.ticketWarningText {
+  font-size: 0.8rem;
+  color: #b45309;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.ticketActions {
+  padding: 1.25rem 2rem;
+  background: white;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 600px) {
+  .ticketRow, .ticketHighlightBlock {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* ─── Decision Options (Ubicación vs Regular) ─── */
+.decisionWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeIn 0.4s ease-out;
+  padding: 1rem;
+}
+
+.decisionHeader {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.decisionHeader h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #182f59;
+  margin: 0 0 0.5rem 0;
+}
+
+.decisionHeader p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.decisionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.decisionCard {
+  background: white;
+  border: 2px solid #cbd5e1;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.02);
+}
+
+.decisionCard:hover {
+  border-color: #f46c22;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px -8px rgba(244, 108, 34, 0.15);
+}
+
+.decisionIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: #f1f5f9;
+  color: #182f59;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  transition: all 0.3s;
+}
+
+.decisionCard:hover .decisionIcon {
+  background: #fff3eb;
+  color: #f46c22;
+}
+
+.decisionTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #182f59;
+  margin: 0 0 0.75rem 0;
+}
+
+.decisionDesc {
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .decisionGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,195 @@
+.gridContainer {
+  background: var(--surface-bg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.title {
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-top: var(--space-1);
+}
+.subtitle strong {
+  color: var(--color-primary-600);
+  background: var(--color-primary-50);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.enrolledBadge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-success-50);
+  color: var(--color-success-700);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.unenrollBtn {
+  margin-left: var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--color-danger-600);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-5);
+}
+
+/* ── Card Styles ── */
+.courseCard {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.courseCard:hover:not(.fullCard) {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary-200);
+}
+
+.enrolledCard {
+  border: 2px solid var(--color-success-500);
+  background: #fdfdfd;
+}
+
+.fullCard {
+  opacity: 0.7;
+  background: var(--color-gray-50);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timeTag {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.timeTag svg { color: var(--color-primary-500); }
+
+.levelTag {
+  background: var(--color-secondary-900);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.teacherInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.teacherInfo svg { color: var(--text-tertiary); }
+
+.slotsInfo {
+  background: var(--surface-bg);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+
+.slotsText {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-2);
+}
+
+.slotsLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.slotsCount {
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+.slotsFull { color: var(--color-danger-600); }
+
+.progressBar {
+  height: 6px;
+  background: var(--color-gray-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+/* ── Locked State ── */
+.lockedContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-12);
+  background: var(--surface-card);
+  border: 1px dashed var(--color-gray-300);
+  border-radius: var(--radius-2xl);
+  text-align: center;
+}
+
+.lockedContent h3 {
+  font-size: var(--text-lg);
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.lockedContent p {
+  color: var(--text-secondary);
+  max-width: 400px;
+}
+
+.emptyState {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--space-8);
+  color: var(--text-secondary);
+  background: white;
+  border-radius: var(--radius-xl);
+  border: 1px dashed var(--color-gray-200);
+}
