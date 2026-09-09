@@ -1,10 +1,10 @@
-# 📖 Manual de Usuario Completo - Sistema SIGATE
+# Manual de Usuario Completo - Sistema SIGATE
 
 Este manual de usuario describe detalladamente el funcionamiento de la plataforma **SIGATE** (Sistema Integrado de Gestión Académica y Trámites Estudiantiles) del **Instituto Superior Tecnológico de Turismo y Patrimonio "Yavirac"**. La plataforma automatiza los flujos de Matrículas, Registro de Bitácoras de Prácticas Pre-Profesionales, Suficiencia de Inglés y Expedientes de Titulación.
 
 ---
 
-## 🔐 1. Módulo de Autenticación y Acceso Seguro
+##  1. Módulo de Autenticación y Acceso Seguro
 
 ### Inicio de Sesión (Login)
 1. Acceda a la URL principal de la aplicación.
@@ -51,7 +51,7 @@ Al ingresar con una cuenta de estudiante, visualizará un panel unificado de con
    * Su **Certificado de No Adeudar** solventado por colecturía.
 5. **Paso 4 (Confirmación):** Revise el resumen del trámite y haga clic en **Completar Solicitud**. Su expediente pasará al estado `SUBMITTED` (Recibido).
 
-### 💼 Módulo de Prácticas Pre-Profesionales
+### Módulo de Prácticas Pre-Profesionales
 Este módulo le permite autogestionar su progreso laboral de 400 horas:
 1. Ingrese a la sección **Prácticas**.
 2. Si no posee un proyecto activo, el sistema auto-creará un proyecto de vinculación basado en su carrera asignándole un convenio y un docente tutor.
@@ -65,7 +65,7 @@ Este módulo le permite autogestionar su progreso laboral de 400 horas:
    * Rellene los datos de los formatos oficiales de control dual: Acta de Compromiso (F1), Currículo de Vida (F2), Plan Marco de Formación (F3), Plan de Rotación (F4), Control de Asistencia y Horario (F5) y Evaluaciones (F7/F8).
    * Presione **Guardar Progreso** en la parte inferior para almacenar sus datos de forma segura.
 
-### 🗣️ Módulo de Inglés (Yavirac English Center - YEC)
+###  Módulo de Inglés (Yavirac English Center - YEC)
 La aprobación de la suficiencia en una segunda lengua (nivel A2 mínimo) es indispensable para el egresamiento:
 1. Ingrese a la sección **Inglés**.
 2. El sistema evaluará su historial:
@@ -74,7 +74,7 @@ La aprobación de la suficiencia en una segunda lengua (nivel A2 mínimo) es ind
 
 ---
 
-## 🏫 3. Flujo del Docente / Auditor Académico
+## 3. Flujo del Docente / Auditor Académico
 
 El personal docente y coordinadores cuentan con bandejas de entrada centralizadas para auditar los expedientes de su respectiva carrera:
 
@@ -92,7 +92,7 @@ El personal docente y coordinadores cuentan con bandejas de entrada centralizada
 
 ---
 
-## ⚙️ 4. Flujo del Administrador General
+## 4. Flujo del Administrador General
 
 El administrador central de la plataforma tiene control total sobre las cuentas y mallas del instituto Yavirac:
 
